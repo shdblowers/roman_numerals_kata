@@ -1,0 +1,6 @@
+[package]
+name = "roman_numerals_kata"
+version = "0.1.0"
+authors = ["Steven Blowers <shdblowers@gmail.com>"]
+
+[dependencies]
