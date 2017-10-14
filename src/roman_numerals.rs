@@ -1,9 +1,12 @@
-pub fn encode(input: u32) -> String {
-    if input == 1 {
-        "I".to_string()
-    } else {
-        "II".to_string()
+pub fn encode(mut input: u32) -> String {
+    let mut result = String::new();
+
+    while input > 0 {
+        result = result + "I";
+        input = input - 1;
     }
+
+    result
 }
 
 #[cfg(test)]
