@@ -1,13 +1,19 @@
 pub fn encode(mut input: u32) -> String {
+
+    let mapping = [
+        ("V", 5),
+        ("I", 1)
+    ];
+
     let mut result = String::new();
 
     while input > 0 {
-        if input > 5 {
-            result = result + "V";
-            input = input - 5;
-        } else {
-            result = result + "I";
-            input = input - 1;
+
+        for map in &mapping {
+            if input >= map.1 {
+                result = result + map.0;
+                input = input - map.1;
+            }
         }
     }
 
