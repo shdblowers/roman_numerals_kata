@@ -8,11 +8,10 @@ pub fn encode(mut input: u32) -> String {
     let mut result = String::new();
 
     while input > 0 {
-
-        for map in &mapping {
-            if input >= map.1 {
-                result = result + map.0;
-                input = input - map.1;
+        for &(roman, decimal) in &mapping {
+            if input >= decimal {
+                result = result + roman;
+                input = input - decimal;
             }
         }
     }
