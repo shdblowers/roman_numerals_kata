@@ -6,6 +6,8 @@ The instructions stated the solution should be submitted in a runnable format, I
 
 From the compiled languages on offer, I wanted a language that supported user input and output from the command-line, had a good built-in unit testing framework and would allow my solution to run fast, I therefore settled on Rust.
 
+Build the Roman numerals from left to right.
+
 ## Assumptions made
 
 The input/output will be provided via the command-line.
