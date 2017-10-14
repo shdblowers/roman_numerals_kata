@@ -8,4 +8,6 @@ From the compiled languages on offer, I wanted a language that supported user in
 
 ## Assumptions made
 
+The input/output will be provided via the command-line.
+
 ## Caveats
