@@ -36,37 +36,40 @@ mod tests {
     use super::*;
 
     #[test]
-    fn encode_1() {
+    fn encode_singles() {
         assert_eq!("I", encode(1));
+        assert_eq!("X", encode(10));
+        assert_eq!("C", encode(100));
+        assert_eq!("MCXI", encode(1111));
     }
 
     #[test]
-    fn encode_2() {
-        assert_eq!("II", encode(2));
-    }
-
-    #[test]
-    fn encode_4() {
+    fn encode_fours() {
         assert_eq!("IV", encode(4));
+        assert_eq!("XL", encode(40));
+        assert_eq!("CD", encode(400));
+        assert_eq!("MMMM", encode(4000));
     }
 
     #[test]
-    fn encode_6() {
-        assert_eq!("VI", encode(6));
+    fn encode_fives() {
+        assert_eq!("V", encode(5));
+        assert_eq!("L", encode(50));
+        assert_eq!("D", encode(500));
     }
 
     #[test]
-    fn encode_1991() {
-        assert_eq!("MCMXCI", encode(1991));
+    fn encode_nines() {
+        assert_eq!("IX", encode(9));
+        assert_eq!("XC", encode(90));
+        assert_eq!("CM", encode(900));
     }
 
     #[test]
-    fn encode_4999() {
-        assert_eq!("MMMMCMXCIX", encode(4999));
-    }
-
-    #[test]
-    fn encode_444() {
+    fn encode_multiples() {
         assert_eq!("CDXLIV", encode(444));
+        assert_eq!("MCMXCI", encode(1991));
+        assert_eq!("MMMMDXCIV", encode(4594));
+        assert_eq!("MMMMCMXCIX", encode(4999));
     }
 }
