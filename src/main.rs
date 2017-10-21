@@ -1,26 +1,32 @@
 extern crate roman_numerals_kata;
 
-use std::io;
+use std::env;
+use std::process;
 
 fn main() {
+    let args: Vec<String> = env::args().collect();
 
-    loop {
-        println!("Please enter the number you wish to convert to roman numerals (1 - 3999):");
+    let decimal = parse(&args).unwrap_or_else(|err| {
+        eprintln!("Problem parsing arguments: {}", err);
+        process::exit(1);
+    });
 
-        let mut user_input = String::new();
+    println!("{}", roman_numerals_kata::encode(decimal));
+}
 
-        io::stdin().read_line(&mut user_input).expect("Error");
-
-        let user_input: u32 = match user_input.trim().parse() {
-            Ok(num) => num,
-            Err(_) => {
-                println!("Invalid input, try again!");
-                continue;
-            }
-        };
-
-        println!("{}", roman_numerals_kata::encode(user_input));
-        break;
+fn parse(args: &[String]) -> Result<u32, &'static str> {
+    if args.len() != 2 {
+        return Err("Incorrect number of arguments.");
     }
 
+    let decimal: u32 = match args[1].clone().trim().parse() {
+        Ok(num) => num,
+        Err(_) => {return Err("Argument not a number.");}
+    };
+
+    if decimal < 1 || decimal > 3999 {
+        return Err("Number must be between 1 and 3999.");
+    }
+
+    Ok(decimal)
 }
