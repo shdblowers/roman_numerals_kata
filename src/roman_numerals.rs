@@ -1,25 +1,25 @@
-pub fn encode(mut input: u32) -> String {
+const MAPPING: [(&str, u32); 13] = [
+    ("M",  1000),
+    ("CM", 900),
+    ("D",  500),
+    ("CD", 400),
+    ("C",  100),
+    ("XC", 90),
+    ("L",  50),
+    ("XL", 40),
+    ("X",  10),
+    ("IX", 9),
+    ("V",  5),
+    ("IV", 4),
+    ("I",  1),
+];
 
-    let mapping = [
-        ("M",  1000),
-        ("CM", 900),
-        ("D",  500),
-        ("CD", 400),
-        ("C",  100),
-        ("XC", 90),
-        ("L",  50),
-        ("XL", 40),
-        ("X",  10),
-        ("IX", 9),
-        ("V",  5),
-        ("IV", 4),
-        ("I",  1),
-    ];
+pub fn encode(mut input: u32) -> String {
 
     let mut result = String::new();
 
     while input > 0 {
-        for &(roman, decimal) in &mapping {
+        for &(roman, decimal) in &MAPPING {
             if input >= decimal {
                 result = result + roman;
                 input = input - decimal;
