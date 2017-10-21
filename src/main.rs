@@ -1,4 +1,4 @@
-mod roman_numerals;
+extern crate roman_numerals_kata;
 
 use std::io;
 
@@ -19,7 +19,7 @@ fn main() {
             }
         };
 
-        println!("{}", roman_numerals::encode(user_input));
+        println!("{}", roman_numerals_kata::encode(user_input));
         break;
     }
 
